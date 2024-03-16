@@ -161,7 +161,22 @@ class GitHubUser {
 
   @override
   String toString() {
-    return 'GitHubUser(login: $login, id: $id, nodeId: $nodeId, avatarUrl: $avatarUrl, url: $url, htmlUrl: $htmlUrl, followersUrl: $followersUrl, followingUrl: $followingUrl, gistsUrl: $gistsUrl, starredUrl: $starredUrl, subscriptionsUrl: $subscriptionsUrl, organizationsUrl: $organizationsUrl, reposUrl: $reposUrl, eventsUrl: $eventsUrl, receivedEventsUrl: $receivedEventsUrl, type: $type, siteAdmin: $siteAdmin, name: $name, company: $company, blog: $blog, location: $location, email: $email, hireable: $hireable, bio: $bio, twitterUsername: $twitterUsername, publicRepos: $publicRepos, publicGists: $publicGists, followers: $followers, following: $following)';
+    return '''
+  Login Name:$login,
+  Other Details
+  Name: $name, 
+  Url: $url,
+  FollowersUrl: $followersUrl,
+  ReposUrl: $reposUrl,
+  Type: $type, 
+  Location: $location,
+  Email: $email,
+  Hireable: ${hireable ? "Yes" : "No"}, 
+  Bio: $bio, 
+  TwitterUsername: $twitterUsername,
+  PublicRepos: $publicRepos, 
+  Followers: $followers, 
+  Following: $following''';
   }
 
   GitHubUser.dummy()
@@ -194,4 +209,73 @@ class GitHubUser {
         publicGists = -1,
         followers = -1,
         following = -1;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is GitHubUser &&
+        other.login == login &&
+        other.id == id &&
+        other.nodeId == nodeId &&
+        other.avatarUrl == avatarUrl &&
+        other.url == url &&
+        other.htmlUrl == htmlUrl &&
+        other.followersUrl == followersUrl &&
+        other.followingUrl == followingUrl &&
+        other.gistsUrl == gistsUrl &&
+        other.starredUrl == starredUrl &&
+        other.subscriptionsUrl == subscriptionsUrl &&
+        other.organizationsUrl == organizationsUrl &&
+        other.reposUrl == reposUrl &&
+        other.eventsUrl == eventsUrl &&
+        other.receivedEventsUrl == receivedEventsUrl &&
+        other.type == type &&
+        other.siteAdmin == siteAdmin &&
+        other.name == name &&
+        other.company == company &&
+        other.blog == blog &&
+        other.location == location &&
+        other.email == email &&
+        other.hireable == hireable &&
+        other.bio == bio &&
+        other.twitterUsername == twitterUsername &&
+        other.publicRepos == publicRepos &&
+        other.publicGists == publicGists &&
+        other.followers == followers &&
+        other.following == following;
+  }
+
+  @override
+  int get hashCode {
+    return login.hashCode ^
+        id.hashCode ^
+        nodeId.hashCode ^
+        avatarUrl.hashCode ^
+        url.hashCode ^
+        htmlUrl.hashCode ^
+        followersUrl.hashCode ^
+        followingUrl.hashCode ^
+        gistsUrl.hashCode ^
+        starredUrl.hashCode ^
+        subscriptionsUrl.hashCode ^
+        organizationsUrl.hashCode ^
+        reposUrl.hashCode ^
+        eventsUrl.hashCode ^
+        receivedEventsUrl.hashCode ^
+        type.hashCode ^
+        siteAdmin.hashCode ^
+        name.hashCode ^
+        company.hashCode ^
+        blog.hashCode ^
+        location.hashCode ^
+        email.hashCode ^
+        hireable.hashCode ^
+        bio.hashCode ^
+        twitterUsername.hashCode ^
+        publicRepos.hashCode ^
+        publicGists.hashCode ^
+        followers.hashCode ^
+        following.hashCode;
+  }
 }

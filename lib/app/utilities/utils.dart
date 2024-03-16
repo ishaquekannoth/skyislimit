@@ -15,6 +15,7 @@ class AppPaintings {
   static TextStyle commonStyle = TextStyle(
     color: AppPaintings.appBlack,
     fontSize: 16.h,
+    fontWeight: FontWeight.bold,
     overflow: TextOverflow.ellipsis,
   );
 }

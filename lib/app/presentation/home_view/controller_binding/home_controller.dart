@@ -22,7 +22,7 @@ class HomeController extends GetxController {
     if (_debounceTimer?.isActive ?? false) {
       _debounceTimer?.cancel();
     }
-    _debounceTimer = Timer(const Duration(milliseconds: 100), () async {
+    _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
       isLoading.value = true;
       final Result result =
           await HomeRepo().fireTheSearch(searchQuery: key.trim());

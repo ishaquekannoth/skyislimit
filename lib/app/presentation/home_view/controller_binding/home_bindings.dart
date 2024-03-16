@@ -4,6 +4,6 @@ import 'package:skyislimit/app/presentation/home_view/controller_binding/home_co
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(HomeController());
+    Get.put(HomeController(), permanent: true);
   }
 }
