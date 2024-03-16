@@ -4,17 +4,18 @@ class RepoModel {
   final bool private;
   final String description;
   final String repoUrl;
-  final String visibilty;
+  final String visibility;
   final String defaultBranch;
-  RepoModel({
-    required this.name,
-    required this.fullName,
-    required this.private,
-    required this.description,
-    required this.repoUrl,
-    required this.visibilty,
-    required this.defaultBranch,
-  });
+  final String login;
+  RepoModel(
+      {required this.name,
+      required this.fullName,
+      required this.private,
+      required this.description,
+      required this.repoUrl,
+      required this.visibility,
+      required this.defaultBranch,
+      required this.login});
 
   RepoModel copyWith({
     String? name,
@@ -24,6 +25,7 @@ class RepoModel {
     String? repoUrl,
     String? visibilty,
     String? defaultBranch,
+    String? login,
   }) {
     return RepoModel(
       name: name ?? this.name,
@@ -31,26 +33,37 @@ class RepoModel {
       private: private ?? this.private,
       description: description ?? this.description,
       repoUrl: repoUrl ?? this.repoUrl,
-      visibilty: visibilty ?? this.visibilty,
+      visibility: visibilty ?? visibility,
+      login: login ?? this.login,
       defaultBranch: defaultBranch ?? this.defaultBranch,
     );
   }
 
+  RepoModel.dummy()
+      : name = "Not Available",
+        fullName = "Not Available",
+        private = false,
+        description = "Not Available",
+        repoUrl = "Not Available",
+        visibility = "Not Available",
+        defaultBranch = "Not Available",
+        login = "Not Available";
+
   factory RepoModel.fromJson({required Map<String, dynamic> json}) {
     return RepoModel(
-      name: json['name'] ?? '',
-      fullName: json['full_name'] ?? '',
-      private: json['private'] ?? false,
-      description: json['description'] ?? '',
-      repoUrl: json['url'] ?? '',
-      visibilty: json['visibility'] ?? '',
-      defaultBranch: json['default_branch'] ?? '',
-    );
+        name: json['name'] ?? '',
+        fullName: json['full_name'] ?? '',
+        private: json['private'] ?? false,
+        description: json['description'] ?? '',
+        repoUrl: json['url'] ?? '',
+        visibility: json['visibility'] ?? '',
+        defaultBranch: json['default_branch'] ?? '',
+        login: json['owner']['login'] ?? '');
   }
 
   @override
   String toString() {
-    return 'RepoModel(name: $name, fullName: $fullName, private: $private, description: $description, repoUrl: $repoUrl, visibilty: $visibilty, defaultBranch: $defaultBranch)';
+    return 'RepoModel(name: $name,login: $login, fullName: $fullName, private: $private, description: $description, repoUrl: $repoUrl, visibilty: $visibility, defaultBranch: $defaultBranch)';
   }
 
   @override
@@ -63,7 +76,8 @@ class RepoModel {
         other.private == private &&
         other.description == description &&
         other.repoUrl == repoUrl &&
-        other.visibilty == visibilty &&
+        other.visibility == visibility &&
+        other.login == login &&
         other.defaultBranch == defaultBranch;
   }
 
@@ -74,7 +88,8 @@ class RepoModel {
         private.hashCode ^
         description.hashCode ^
         repoUrl.hashCode ^
-        visibilty.hashCode ^
+        visibility.hashCode ^
+        login.hashCode ^
         defaultBranch.hashCode;
   }
 }

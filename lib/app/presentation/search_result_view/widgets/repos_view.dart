@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skyislimit/app/repositories/models/repo_model.dart';
 import 'package:skyislimit/app/utilities/utils.dart';
 
-class AERepoCard extends StatelessWidget {
+class RepoCard extends StatelessWidget {
   final RepoModel repoModel;
   final bool? rightPadding;
   final String imageUrl;
   final void Function(RepoModel repoModel)? onTap;
-  const AERepoCard(
+  const RepoCard(
       {super.key,
       required this.repoModel,
       this.rightPadding = false,
@@ -20,10 +20,10 @@ class AERepoCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap != null ? () => onTap!(repoModel) : null,
       child: Container(
-        height: 173.h,
+        height: 150.h,
         width: 317.w,
-        margin: EdgeInsets.only(left: 16.w, right: rightPadding! ? 16.w : 0),
-        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.w),
+        margin: EdgeInsets.only(bottom: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 5.h, vertical: 16.w),
         decoration: BoxDecoration(
             color: AppPaintings.appWhite,
             borderRadius: BorderRadius.circular(10.r)),
@@ -37,7 +37,7 @@ class AERepoCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(repoModel.name,
+                    Text("Repo Name :${repoModel.name}",
                         maxLines: 1,
                         style: AppPaintings.commonStyle.copyWith(
                             fontSize: 14.sp,
@@ -46,8 +46,9 @@ class AERepoCard extends StatelessWidget {
                     SizedBox(
                       height: 4.h,
                     ),
-                    Text(repoModel.description,
+                    Text("Project type:${repoModel.description}",
                         maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: AppPaintings.commonStyle.copyWith(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -56,7 +57,7 @@ class AERepoCard extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       padding: EdgeInsets.only(top: 6.h),
                       child: Row(
-                        children: [Text(repoModel.visibilty)],
+                        children: [Text("Visibility :${repoModel.visibility}")],
                       ),
                     )
                   ],
@@ -93,17 +94,18 @@ class AERepoCard extends StatelessWidget {
                   ))
             ],
           ),
-          SizedBox(height: 16.h),
-          SizedBox(
-            height: 54.h,
-            width: 279.w,
-            child: Text(repoModel.description,
-                textAlign: TextAlign.left,
-                maxLines: 3,
-                style: AppPaintings.commonStyle.copyWith(
-                    fontSize: 12.h,
-                    fontWeight: FontWeight.w500,
-                    color: AppPaintings.deepPurple)),
+          Expanded(
+            child: SizedBox(
+              width: 300.w,
+              child: Text(repoModel.description,
+                  textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  style: AppPaintings.commonStyle.copyWith(
+                      fontSize: 12.h,
+                      fontWeight: FontWeight.w500,
+                      color: AppPaintings.deepPurple)),
+            ),
           )
         ]),
       ),
