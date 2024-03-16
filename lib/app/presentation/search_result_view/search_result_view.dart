@@ -1,13 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:skyislimit/app/presentation/search_result_view/controller_binding/search_result_controller.dart';
 import 'package:skyislimit/app/presentation/search_result_view/widgets/repos_view.dart';
 import 'package:skyislimit/app/presentation/search_result_view/widgets/selected_user_widget.dart';
 import 'package:skyislimit/app/repositories/models/github_user.dart';
 import 'package:skyislimit/app/repositories/models/repo_model.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'controller_binding/search_result_controller.dart';
 
 class SearchResultViewer extends GetView<SearchResultController> {
   const SearchResultViewer({super.key});
@@ -40,27 +41,30 @@ class SearchResultViewer extends GetView<SearchResultController> {
                   physics: const BouncingScrollPhysics(),
                   child: Obx(
                     () => Column(
-                      children: controller.gitHubRepos.length == 1 &&
-                              controller.gitHubRepos.first == RepoModel.dummy()
-                          ? [
-                              SizedBox(
-                                height: ScreenUtil().screenHeight * 0.5,
-                                child: const Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              )
-                            ]
-                          : [
-                              ...List.generate(
-                                  controller.gitHubRepos.length,
-                                  (index) => RepoCard(
-                                      onTap: (repoModel) {
-                                        log(repoModel.toString());
-                                      },
-                                      repoModel: controller.gitHubRepos[index],
-                                      imageUrl: user.avatarUrl))
-                            ],
-                    ),
+                        children: controller.gitHubRepos.length != 1 &&
+                                controller.gitHubRepos.first !=
+                                    RepoModel.dummy()
+                            ? List.generate(
+                                controller.gitHubRepos.length,
+                                (index) => RepoCard(
+                                    onTap: (repoModel) {
+                                      try {
+                                        launchUrl(Uri.parse(repoModel.htmlUrl));
+                                      } catch (e) {
+                                        Fluttertoast.showToast(
+                                            msg: "Something went wrong..");
+                                      }
+                                    },
+                                    repoModel: controller.gitHubRepos[index],
+                                    imageUrl: user.avatarUrl))
+                            : List.generate(
+                                1,
+                                (index) => SizedBox(
+                                      height: ScreenUtil().screenHeight * 0.5,
+                                      child: const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    ))),
                   ),
                 ),
               ],

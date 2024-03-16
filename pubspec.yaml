@@ -37,6 +37,7 @@ dependencies:
   flutter_typeahead: ^5.2.0
   fluttertoast: ^8.2.4
   get: ^4.6.6
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_lints: ^3.0.0

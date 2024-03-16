@@ -7,12 +7,14 @@ class RepoModel {
   final String visibility;
   final String defaultBranch;
   final String login;
+  final String htmlUrl;
   RepoModel(
       {required this.name,
       required this.fullName,
       required this.private,
       required this.description,
       required this.repoUrl,
+      required this.htmlUrl,
       required this.visibility,
       required this.defaultBranch,
       required this.login});
@@ -24,6 +26,7 @@ class RepoModel {
     String? description,
     String? repoUrl,
     String? visibilty,
+    String? htmlUrl,
     String? defaultBranch,
     String? login,
   }) {
@@ -35,6 +38,7 @@ class RepoModel {
       repoUrl: repoUrl ?? this.repoUrl,
       visibility: visibilty ?? visibility,
       login: login ?? this.login,
+      htmlUrl: htmlUrl ?? this.htmlUrl,
       defaultBranch: defaultBranch ?? this.defaultBranch,
     );
   }
@@ -47,6 +51,7 @@ class RepoModel {
         repoUrl = "Not Available",
         visibility = "Not Available",
         defaultBranch = "Not Available",
+        htmlUrl = "Not Available",
         login = "Not Available";
 
   factory RepoModel.fromJson({required Map<String, dynamic> json}) {
@@ -58,6 +63,7 @@ class RepoModel {
         repoUrl: json['url'] ?? '',
         visibility: json['visibility'] ?? '',
         defaultBranch: json['default_branch'] ?? '',
+        htmlUrl: json['html_url'],
         login: json['owner']['login'] ?? '');
   }
 
@@ -78,6 +84,7 @@ class RepoModel {
         other.repoUrl == repoUrl &&
         other.visibility == visibility &&
         other.login == login &&
+        other.htmlUrl == htmlUrl &&
         other.defaultBranch == defaultBranch;
   }
 
@@ -88,6 +95,7 @@ class RepoModel {
         private.hashCode ^
         description.hashCode ^
         repoUrl.hashCode ^
+        htmlUrl.hashCode ^
         visibility.hashCode ^
         login.hashCode ^
         defaultBranch.hashCode;
