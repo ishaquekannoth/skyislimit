@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         getPages: AppPages.pages,
         initialRoute: Routes.homeView,
-        
+        initialBinding: HomeBinding(),
         onUnknownRoute: (settings) => GetPageRoute(
             routeName: Routes.homeView,
             page: () => const HomeView(),
@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        
         home: const HomeView(),
       ),
     );
