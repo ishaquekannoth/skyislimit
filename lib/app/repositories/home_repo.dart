@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:skyislimit/app/repositories/models/github_user.dart';
+import 'package:skyislimit/app/utilities/strings.dart';
 import 'package:skyislimit/remote/api_result.dart';
 import 'package:skyislimit/remote/dio_exceptions.dart';
 import 'package:skyislimit/remote/dio_services.dart';
@@ -12,6 +13,7 @@ class HomeRepo {
   Future<Result> fireTheSearch({required String searchQuery}) async {
     try {
       final Response response = await DioService.makeRESTrequest(
+        baseOptions: BaseOptions(headers: UrlStrings.gitHubTokenHeader),
         urlPath: searchQuery,
         method: RequestMethod.getRequest,
       );

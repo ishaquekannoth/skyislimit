@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppPaintings {
   static Color appBlack = Colors.black;
@@ -10,6 +11,11 @@ class AppPaintings {
   static ThemeData appTheme = ThemeData(
     textTheme: TextTheme(titleSmall: TextStyle(color: AppPaintings.appBlack)),
     primarySwatch: Colors.deepPurple,
+  );
+  static TextStyle commonStyle = TextStyle(
+    color: AppPaintings.appBlack,
+    fontSize: 16.h,
+    overflow: TextOverflow.ellipsis,
   );
 }
 

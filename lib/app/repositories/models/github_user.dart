@@ -63,7 +63,7 @@ class GitHubUser {
 
   factory GitHubUser.fromJson({required Map<String, dynamic> json}) {
     return GitHubUser(
-      login: json['login'] ?? "Not Available",
+      login: json['login'] ?? "No Users Found",
       id: json['id'] ?? -1,
       nodeId: json['node_id'] ?? "Not Available",
       avatarUrl: json['avatar_url'] ?? "Not Available",
@@ -163,4 +163,35 @@ class GitHubUser {
   String toString() {
     return 'GitHubUser(login: $login, id: $id, nodeId: $nodeId, avatarUrl: $avatarUrl, url: $url, htmlUrl: $htmlUrl, followersUrl: $followersUrl, followingUrl: $followingUrl, gistsUrl: $gistsUrl, starredUrl: $starredUrl, subscriptionsUrl: $subscriptionsUrl, organizationsUrl: $organizationsUrl, reposUrl: $reposUrl, eventsUrl: $eventsUrl, receivedEventsUrl: $receivedEventsUrl, type: $type, siteAdmin: $siteAdmin, name: $name, company: $company, blog: $blog, location: $location, email: $email, hireable: $hireable, bio: $bio, twitterUsername: $twitterUsername, publicRepos: $publicRepos, publicGists: $publicGists, followers: $followers, following: $following)';
   }
+
+  GitHubUser.dummy()
+      : login = "Not Available",
+        id = -1,
+        nodeId = "Not Available",
+        avatarUrl = "Not Available",
+        url = "Not Available",
+        htmlUrl = "Not Available",
+        followersUrl = "Not Available",
+        followingUrl = "Not Available",
+        gistsUrl = "Not Available",
+        starredUrl = "Not Available",
+        subscriptionsUrl = "Not Available",
+        organizationsUrl = "Not Available",
+        reposUrl = "Not Available",
+        eventsUrl = "Not Available",
+        receivedEventsUrl = "Not Available",
+        type = "Not Available",
+        siteAdmin = false,
+        name = "Not Available",
+        company = "Not Available",
+        blog = "Not Available",
+        location = "Not Available",
+        email = "Not Available",
+        hireable = false,
+        bio = "Not Available",
+        twitterUsername = "Not Available",
+        publicRepos = -1,
+        publicGists = -1,
+        followers = -1,
+        following = -1;
 }

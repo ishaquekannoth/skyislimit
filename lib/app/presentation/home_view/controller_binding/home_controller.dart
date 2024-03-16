@@ -9,19 +9,28 @@ import 'package:skyislimit/app/repositories/models/github_user.dart';
 import 'package:skyislimit/remote/api_result.dart';
 
 class HomeController extends GetxController {
-  Rx<GitHubUser> gitHubUser = GitHubUser.fromJson(json: {}).obs;
+  Rx<GitHubUser> gitHubUser = GitHubUser.dummy().obs;
+  RxBool isLoading = false.obs;
   Timer? _debounceTimer;
 
-  void fireSearch(BuildContext context, {required String key}) {
+  void fireTheSearch(BuildContext context, {required String key}) {
+    if (key.trim().isEmpty) {
+      gitHubUser.value = GitHubUser.dummy();
+      return;
+    }
+
     if (_debounceTimer?.isActive ?? false) {
       _debounceTimer?.cancel();
     }
-    _debounceTimer = Timer(const Duration(seconds: 1), () async {
-      final Result result = await HomeRepo().fireTheSearch(searchQuery: key);
+    _debounceTimer = Timer(const Duration(milliseconds: 100), () async {
+      isLoading.value = true;
+      final Result result =
+          await HomeRepo().fireTheSearch(searchQuery: key.trim());
+      isLoading.value = false;
       if (result.isSuccess) {
         gitHubUser.value = result.successResponse;
-        log(gitHubUser.value.toString());
       } else {
+        log(result.toString());
         Fluttertoast.showToast(msg: result.toString());
       }
     });
