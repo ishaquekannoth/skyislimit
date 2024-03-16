@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:skyislimit/app/presentation/home_view/controller_binding/home_bindings.dart';
 import 'package:skyislimit/app/presentation/home_view/home_view.dart';
 
 class Routes {
@@ -10,6 +11,7 @@ class AppPages {
     GetPage(
       name: Routes.homeView,
       page: () => const HomeView(),
+      binding: HomeBinding()
     ),
   ];
 }

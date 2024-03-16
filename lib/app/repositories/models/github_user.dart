@@ -1,0 +1,166 @@
+class GitHubUser {
+  final String login;
+  final int id;
+  final String nodeId;
+  final String avatarUrl;
+  final String url;
+  final String htmlUrl;
+  final String followersUrl;
+  final String followingUrl;
+  final String gistsUrl;
+  final String starredUrl;
+  final String subscriptionsUrl;
+  final String organizationsUrl;
+  final String reposUrl;
+  final String eventsUrl;
+  final String receivedEventsUrl;
+  final String type;
+  final bool siteAdmin;
+  final String name;
+  final String company;
+  final String blog;
+  final String location;
+  final String email;
+  final bool hireable;
+  final String bio;
+  final String twitterUsername;
+  final int publicRepos;
+  final int publicGists;
+  final int followers;
+  final int following;
+
+  GitHubUser({
+    required this.login,
+    required this.id,
+    required this.nodeId,
+    required this.avatarUrl,
+    required this.url,
+    required this.htmlUrl,
+    required this.followersUrl,
+    required this.followingUrl,
+    required this.gistsUrl,
+    required this.starredUrl,
+    required this.subscriptionsUrl,
+    required this.organizationsUrl,
+    required this.reposUrl,
+    required this.eventsUrl,
+    required this.receivedEventsUrl,
+    required this.type,
+    required this.siteAdmin,
+    required this.name,
+    required this.company,
+    required this.blog,
+    required this.location,
+    required this.email,
+    required this.hireable,
+    required this.bio,
+    required this.twitterUsername,
+    required this.publicRepos,
+    required this.publicGists,
+    required this.followers,
+    required this.following,
+  });
+
+  factory GitHubUser.fromJson({required Map<String, dynamic> json}) {
+    return GitHubUser(
+      login: json['login'] ?? "Not Available",
+      id: json['id'] ?? -1,
+      nodeId: json['node_id'] ?? "Not Available",
+      avatarUrl: json['avatar_url'] ?? "Not Available",
+      url: json['url'] ?? "Not Available",
+      htmlUrl: json['html_url'] ?? "Not Available",
+      followersUrl: json['followers_url'] ?? "Not Available",
+      followingUrl: json['following_url'] ?? "Not Available",
+      gistsUrl: json['gists_url'] ?? "Not Available",
+      starredUrl: json['starred_url'] ?? "Not Available",
+      subscriptionsUrl: json['subscriptions_url'] ?? "Not Available",
+      organizationsUrl: json['organizations_url'] ?? "Not Available",
+      reposUrl: json['repos_url'] ?? "Not Available",
+      eventsUrl: json['events_url'] ?? "Not Available",
+      receivedEventsUrl: json['received_events_url'] ?? "Not Available",
+      type: json['type'] ?? "Not Available",
+      siteAdmin: json['site_admin'] ?? false,
+      name: json['name'] ?? "Not Available",
+      company: json['company'] ?? "Not Available",
+      blog: json['blog'] ?? "Not Available",
+      location: json['location'] ?? "Not Available",
+      email: json['email'] ?? "Not Available",
+      hireable: json['hireable'] ?? false,
+      bio: json['bio'] ?? "Not Available",
+      twitterUsername: json['twitter_username'] ?? "Not Available",
+      publicRepos: json['public_repos'] ?? -1,
+      publicGists: json['public_gists'] ?? -1,
+      followers: json['followers'] ?? -1,
+      following: json['following'] ?? -1,
+    );
+  }
+
+  GitHubUser copyWith({
+    String? login,
+    int? id,
+    String? nodeId,
+    String? avatarUrl,
+    String? url,
+    String? htmlUrl,
+    String? followersUrl,
+    String? followingUrl,
+    String? gistsUrl,
+    String? starredUrl,
+    String? subscriptionsUrl,
+    String? organizationsUrl,
+    String? reposUrl,
+    String? eventsUrl,
+    String? receivedEventsUrl,
+    String? type,
+    bool? siteAdmin,
+    String? name,
+    String? company,
+    String? blog,
+    String? location,
+    String? email,
+    bool? hireable,
+    String? bio,
+    String? twitterUsername,
+    int? publicRepos,
+    int? publicGists,
+    int? followers,
+    int? following,
+  }) {
+    return GitHubUser(
+      login: login ?? this.login,
+      id: id ?? this.id,
+      nodeId: nodeId ?? this.nodeId,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      url: url ?? this.url,
+      htmlUrl: htmlUrl ?? this.htmlUrl,
+      followersUrl: followersUrl ?? this.followersUrl,
+      followingUrl: followingUrl ?? this.followingUrl,
+      gistsUrl: gistsUrl ?? this.gistsUrl,
+      starredUrl: starredUrl ?? this.starredUrl,
+      subscriptionsUrl: subscriptionsUrl ?? this.subscriptionsUrl,
+      organizationsUrl: organizationsUrl ?? this.organizationsUrl,
+      reposUrl: reposUrl ?? this.reposUrl,
+      eventsUrl: eventsUrl ?? this.eventsUrl,
+      receivedEventsUrl: receivedEventsUrl ?? this.receivedEventsUrl,
+      type: type ?? this.type,
+      siteAdmin: siteAdmin ?? this.siteAdmin,
+      name: name ?? this.name,
+      company: company ?? this.company,
+      blog: blog ?? this.blog,
+      location: location ?? this.location,
+      email: email ?? this.email,
+      hireable: hireable ?? this.hireable,
+      bio: bio ?? this.bio,
+      twitterUsername: twitterUsername ?? this.twitterUsername,
+      publicRepos: publicRepos ?? this.publicRepos,
+      publicGists: publicGists ?? this.publicGists,
+      followers: followers ?? this.followers,
+      following: following ?? this.following,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'GitHubUser(login: $login, id: $id, nodeId: $nodeId, avatarUrl: $avatarUrl, url: $url, htmlUrl: $htmlUrl, followersUrl: $followersUrl, followingUrl: $followingUrl, gistsUrl: $gistsUrl, starredUrl: $starredUrl, subscriptionsUrl: $subscriptionsUrl, organizationsUrl: $organizationsUrl, reposUrl: $reposUrl, eventsUrl: $eventsUrl, receivedEventsUrl: $receivedEventsUrl, type: $type, siteAdmin: $siteAdmin, name: $name, company: $company, blog: $blog, location: $location, email: $email, hireable: $hireable, bio: $bio, twitterUsername: $twitterUsername, publicRepos: $publicRepos, publicGists: $publicGists, followers: $followers, following: $following)';
+  }
+}

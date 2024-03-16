@@ -18,7 +18,6 @@ class CustomSearchBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return TypeAheadField<String>(
-      debounceDuration: Durations.extralong4,
       constraints: BoxConstraints(maxHeight: 300.h),
       hideOnEmpty: true,
       itemBuilder: (context, value) {
