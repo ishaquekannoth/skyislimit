@@ -19,6 +19,7 @@ class SearchResultController extends GetxController {
         await SearchResultRepo().fetchTheRepoList(userName: userName);
     isLoading.value = false;
     if (result.isSuccess) {
+      
       gitHubRepos.value = result.successResponse;
     } else {
       Fluttertoast.showToast(msg: result.toString());
