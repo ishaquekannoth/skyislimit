@@ -23,6 +23,9 @@ class SearchResultViewer extends GetView<SearchResultController> {
               bottom: TabBar(
                 onTap: (value) {
                   if (value == 1) {
+                    if (user.publicRepos == 0) {
+                      return;
+                    }
                     controller.fetchRepoForTheUser(context,
                         userName: user.login);
                   }
