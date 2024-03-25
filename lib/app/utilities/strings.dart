@@ -1,4 +1,4 @@
-String apiKey = "PUT Your API  Key Here";
+String apiKey = "Bearer YourApiKeyHere";
 
 class UrlStrings {
   static String baseUrl = "https://api.github.com/users/";
