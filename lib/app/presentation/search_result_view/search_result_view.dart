@@ -58,7 +58,7 @@ class SearchResultViewer extends GetView<SearchResultController> {
                         physics: const BouncingScrollPhysics(),
                         child: Obx(
                           () => Column(
-                              children: controller.gitHubRepos.length != 1 &&
+                              children: 
                                       controller.gitHubRepos.first !=
                                           RepoModel.dummy()
                                   ? List.generate(
